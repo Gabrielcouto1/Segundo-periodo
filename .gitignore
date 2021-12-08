@@ -3,3 +3,5 @@
 **/*.gitattributes
 **/*.exe
 **/*.out
+**/*.jpg
+**/*.zip
