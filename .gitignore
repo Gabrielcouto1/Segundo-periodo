@@ -5,3 +5,7 @@
 **/*.out
 **/*.jpg
 **/*.zip
+/Matérias/POO1/Aulas práticas/Exercicio1/nbproject/private/
+/Matérias/POO1/Aulas práticas/AulaPratica1/nbproject/private/
+/Matérias/POO1/Aulas práticas/AulaPratica1/build/
+/Matérias/POO1/Aulas práticas/AulaPratica1/dist/
