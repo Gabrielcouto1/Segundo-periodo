@@ -1,5 +1,10 @@
 /*
-    https://github.com/gabrielcouto1
+    O programa coleta dados de alunos (matricula, nome e nota) e os armazena em um
+    vetor de struct. Apos isso, o programa passa os dados para um arquivo de texto.
+    O nome do arquivo de texto e a quantidade de alunos sao passadas por argumentos 
+    quando o usuario for executar o programa.
+
+    Por Gabriel Couto de Freitas - https://github.com/gabrielcouto1
 */
 
 #include <stdio.h> 
@@ -12,7 +17,7 @@ struct Aluno{
     float nota;
 };
 void preencheDados(struct Aluno a[100],int qtd_aluno);
-void passaArquivo(struct Aluno a[100],int max,FILE *F);
+void preencheArquivo(struct Aluno a[100],int max,FILE *F);
 int argsOK(int argc, char *argv[], int qtd_aluno);
 
 int main(int argc, char *argv[])
@@ -20,22 +25,22 @@ int main(int argc, char *argv[])
     int qtd_aluno = 0;
     FILE *F = NULL;
 
-    F = fopen(argv[1],"w");
+    F = fopen(argv[1],"w"); //Abre o arquivo com a funcao de escrever
     qtd_aluno = atoi(argv[2]);
 
-    if(argsOK(argc,argv,qtd_aluno))
-        return 1;
+    if(argsOK(argc,argv,qtd_aluno)) 
+        return 1;   //Se tiver um erro nos argumentos o programa encerra
 
-    struct Aluno a[qtd_aluno];
+    struct Aluno a[qtd_aluno];  //Inicia o vetor de struct com tamanho que o usuario passar como parametro 
 
-    preencheDados(a,qtd_aluno);
-    passaArquivo(a,qtd_aluno,F);
+    preencheDados(a,qtd_aluno); 
+    preencheArquivo(a,qtd_aluno,F);
 
-    fclose(F);
+    fclose(F);//Fecha o arquivo aberto
     return 0;  //Encerra o programa e retorna o valor 0
 }
 
-void preencheDados(struct Aluno a[100],int max){
+void preencheDados(struct Aluno a[100],int max){//Coleta os dados a serem passados ao arquivo
     int i;
     char c;
 
@@ -54,14 +59,14 @@ void preencheDados(struct Aluno a[100],int max){
     }
 }
 
-void passaArquivo(struct Aluno a[100],int max,FILE *F){
+void preencheArquivo(struct Aluno a[100],int max,FILE *F){ //Passa os dados coletados para o arquivo de texto
     int i;
     for(i=0;i<max;i++){
-        fprintf(F,"Matricula: %s; Nome: %s; Nota: %.2f;\n",a[i].matricula,a[i].nome,a[i].nota);
+        fprintf(F,"Aluno %d-> Matricula: %s; Nome: %s; Nota: %.2f;\n",i+1,a[i].matricula,a[i].nome,a[i].nota);
     }
 }
 
-int argsOK(int argc, char *argv[], int qtd_aluno){
+int argsOK(int argc, char *argv[], int qtd_aluno){  //Testa se os argumentos foram passados corretamente
     char isInt = *argv[2];
 
     if (argc<3){

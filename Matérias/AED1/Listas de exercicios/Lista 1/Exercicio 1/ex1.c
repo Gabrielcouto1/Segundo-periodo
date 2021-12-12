@@ -1,7 +1,12 @@
 /*
+    O programa cadastra ate 10 funcionarios em um vetor de estruturas e armazena dados como
+    o nome, a matricula, a idade, o cargo e o salario.
+    Se o usuario digitar 0 na matricula, o programa para de cadastrar novos funcionarios.
+    Em seguida, o programa apresenta uma tela de pesquisa, onde o usuario ira pesquisar
+    por nome algum funcionario. Se for um nome valido, ele mostra todos os dados do funcionario.
+    Se o usuario digitar "FIM", a pesquisa para e o programa se encerra.
 
-
-    https://github.com/gabrielcouto1
+    Por Gabriel Couto de Freitas - https://github.com/gabrielcouto1
 */
 
 #include <stdio.h>

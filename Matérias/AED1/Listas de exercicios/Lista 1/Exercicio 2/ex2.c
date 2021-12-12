@@ -1,7 +1,9 @@
 /*
+    O programa apresenta o arranjo simples de N elementos P a P.
+    O usuario deve respeitar as regras matematicas ao inserir manualmente
+    os valores de N e P.
 
-
-    https://github.com/gabrielcouto1
+    Por Gabriel Couto de Freitas - https://github.com/gabrielcouto1
 */
 
 #include <stdio.h>
@@ -16,24 +18,24 @@ int main(int argc, char *argv[])
     int p=0;
     int resultado=0;
 
-    printf("\nInsira um valor inteiro e maior que 0 para n: ");
+    printf("\nInsira um valor inteiro e maior que 0 para N: ");
     scanf("%d",&n);
 
     if (n<0){   //Se n for menor que 0, encerra o programa devido a erro matematico
-        fprintf(stderr,"\nVoce inseriu um valor para n menor que 0.\n\n");
+        fprintf(stderr,"\nVoce inseriu um valor para N menor que 0.\n\n");
         return 1;
     }
 
-    printf("\nInsira um valor inteiro e maior que 0 para p, sendo que n>p: ");
+    printf("\nInsira um valor inteiro e maior que 0 para P, sendo que N>P: ");
     scanf("%d",&p);
 
     if (p<0){  //Se p for menor que 0 o programa encerra devido a um erro matematico
-        fprintf(stderr,"\nVoce inseriu um valor para p menor que 0.\n\n");
+        fprintf(stderr,"\nVoce inseriu um valor para P menor que 0.\n\n");
         return 3;
     }
 
     if (p>n){   //Se n for menor que p, o programa encerra devido a um erro matematico
-        fprintf(stderr,"\nVoce inseriu um valor de p maior que o valor de n. Erro matematico.\n\n");
+        fprintf(stderr,"\nVoce inseriu um valor de P maior que o valor de N. Erro matematico.\n\n");
         return 5;
     }
 
