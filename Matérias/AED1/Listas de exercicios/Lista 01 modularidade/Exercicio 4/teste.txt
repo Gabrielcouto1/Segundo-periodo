@@ -1,0 +1,3 @@
+Aluno 1-> Matricula: 123; Nome: gabriel; Nota: 4.50;
+Aluno 2-> Matricula: 456; Nome: couto; Nota: 8.70;
+Aluno 3-> Matricula: 555; Nome: de freitas; Nota: 7.70;

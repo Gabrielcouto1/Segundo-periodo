@@ -18,19 +18,20 @@ struct Aluno{
 };
 void preencheDados(struct Aluno a[100],int qtd_aluno);
 void preencheArquivo(struct Aluno a[100],int max,FILE *F);
-int argsOK(int argc, char *argv[], int qtd_aluno);
+int argsOK(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
     int qtd_aluno = 0;
     FILE *F = NULL;
-
+    
     F = fopen(argv[1],"w"); //Abre o arquivo com a funcao de escrever
-    qtd_aluno = atoi(argv[2]);
 
-    if(argsOK(argc,argv,qtd_aluno)) 
+    if(argsOK(argc,argv)) 
         return 1;   //Se tiver um erro nos argumentos o programa encerra
 
+    qtd_aluno = atoi(argv[2]);
+    
     struct Aluno a[qtd_aluno];  //Inicia o vetor de struct com tamanho que o usuario passar como parametro 
 
     preencheDados(a,qtd_aluno); 
@@ -66,13 +67,11 @@ void preencheArquivo(struct Aluno a[100],int max,FILE *F){ //Passa os dados cole
     }
 }
 
-int argsOK(int argc, char *argv[], int qtd_aluno){  //Testa se os argumentos foram passados corretamente
-    char isInt = *argv[2];
-
+int argsOK(int argc, char *argv[]){  //Testa se os argumentos foram passados corretamente
     if (argc<3){
-        fprintf(stderr,"\nVoce nao inseriu a quantidade suficiente de argumentos.\n");
+        fprintf(stderr,"\nVoce inseriu menos argumentos que o necessario.\n");
         fprintf(stderr,"\nInsira da forma ./programa arquivotexto.txt qtdAlunos .\n");
-        return 1;
+        return 3;
     }
 
     else if (argc>3){
@@ -80,6 +79,9 @@ int argsOK(int argc, char *argv[], int qtd_aluno){  //Testa se os argumentos for
         fprintf(stderr,"\nInsira da forma ./programa arquivotexto.txt qtdAlunos .\n");
         return 3;
     }
+
+    char isInt = *argv[2];
+    int qtd_aluno = 0;
 
     if (isdigit(isInt)){
         qtd_aluno = atoi(argv[2]);
