@@ -3,6 +3,7 @@
 **/*.gitattributes
 **/*.exe
 **/*.out
+**/*.o
 **/*.jpg
 **/*.zip
 /Matérias/POO1/Aulas práticas/Exercicio1/nbproject/private/
