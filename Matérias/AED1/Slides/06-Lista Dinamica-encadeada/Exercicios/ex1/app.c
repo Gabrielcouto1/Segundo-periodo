@@ -4,7 +4,7 @@
 
 int main(){
     Lista lista1;
-    int elem,pos,op=0;
+    int i, qtd, elem, pos, op;
 
     while (1){
         printf("\n---------------Menu---------------\n");
@@ -19,6 +19,7 @@ int main(){
         printf("\tInsira a operacao: ");
         scanf("%d",&op);
         printf("\n----------------------------------\n");
+
         if(op==7)
             break;
         
@@ -26,16 +27,22 @@ int main(){
             case 1:
                 lista1=cria_lista();
                 printf("\n\t\t\tA lista foi criada com sucesso!");
+
                 break;
             case 2:
-                printf("\nInsira o elemento que deseja colocar na lista: ");
-                scanf("%d",&elem);
+                printf("\nInsira quantos elementos deseja inserir na lista: ");
+                scanf("%d",&qtd);
 
-                if(insere_elem(&lista1,elem)==0)
-                    fprintf(stderr,"\n\t\t\tNao foi possivel inserir o elemento desejado.\n");
+                for(i=0;i<qtd;i++){
+                    printf("\nInsira o elemento que deseja colocar na lista: ");
+                    scanf("%d",&elem);
 
-                else   
-                    printf("\n\t\t\tO elemento foi inserido com sucesso!");
+                    if(insere_elem(&lista1,elem)==0)
+                        fprintf(stderr,"\n\t\t\tNao foi possivel inserir o elemento desejado.\n");
+
+                    else   
+                        printf("\n\t\t\tO elemento foi inserido com sucesso!");
+                }
 
                 break;
             case 3:
@@ -44,14 +51,18 @@ int main(){
 
                 if(remove_elem(&lista1,elem)==0)
                     fprintf(stderr,"\n\t\t\tNao foi possivel remore o elemento da lista.\n");
+
                 else   
                     printf("\n\t\t\tO elemento foi removido com sucesso!\n");
+
                 break;
             case 4:
                 mostra_lista(&lista1);
+
                 break;
             case 5:
                 printf("\nTamanho da lista: %d",tam_lista(&lista1));
+
                 break;
             case 6:
                 printf("\nInsira a posicao do elemento que deseja pegar: ");
@@ -66,6 +77,7 @@ int main(){
                 break;
             default:
                 fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");
+
                 break;
         }
     }
