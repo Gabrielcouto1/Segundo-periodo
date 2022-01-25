@@ -85,12 +85,7 @@ Caractere esvazia_lista(Caractere car){
     return car;
 }
 
-char get_elem_pos(Caractere car){
-    int pos;
-
-    printf("\n\n\t\t\tInsira a posicao desejada: ");
-    scanf("%d");
-
+char get_elem_pos(Caractere car, int pos){
     if(pos>=car->Fim||pos>max){
         fprintf(stderr,"\nA posicao inserida eh invalida.\n");
         return 0;
@@ -176,3 +171,17 @@ int tamanho_lista(Caractere car){
     return car->Fim;
 }
 
+Caractere intercalar(Caractere car1, Caractere car2){
+    int i;
+    char elem1,elem2;
+    Caractere car3;
+
+    for(i=0;i<max;i++){
+        if(insere(car3,get_elem_pos(car1,i)==0))
+            fprintf(stderr,"\nNao foi possivel inserir o elemento.\n");
+        if(insere(car3,get_elem_pos(car2,i)==0))
+            fprintf(stderr,"\nNao foi possivel inserir o elemento.\n");
+    }
+    
+    return car3;
+}

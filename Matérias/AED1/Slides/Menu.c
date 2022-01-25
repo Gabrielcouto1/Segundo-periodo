@@ -8,13 +8,12 @@ int main(){
     while (1){
         printf("\n---------------Menu---------------\n");
         printf("\n     O que deseja fazer?\n");
-        printf("[1]: Inicializa uma lista;\n");
-        printf("[2]: Insere elementos;\n");
-        printf("[3]: Remove um elemento;\n");
-        printf("[4]: Remove as vogais;\n");
-        printf("[5]: Pega um elemento pela posicao;\n");
-        printf("[6]: Remove um elemento pela posicao;\n");
-        printf("[6]: Remove um elemento pela posicao;\n");
+        printf("[1]: ;\n");
+        printf("[2]: ;\n");
+        printf("[3]: ;\n");
+        printf("[4]: ;\n");
+        printf("[5]: ;\n");
+        printf("[6]: ;\n");
         printf("[7]: Encerrar o programa.\n");
         printf("\tInsira a operacao: ");
         scanf("%d",&op);

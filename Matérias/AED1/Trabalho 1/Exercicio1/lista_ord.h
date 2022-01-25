@@ -12,3 +12,4 @@ char get_elem_pos(Caractere car);
 int remove_vogal(Caractere car);
 int remove_elem_pos(Caractere car);
 int tamanho_lista(Caractere car);
+Caractere intercalar(Caractere car1, Caractere car2);
