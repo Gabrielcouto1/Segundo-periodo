@@ -50,3 +50,25 @@ int remove_inicio(Lista *lst,int *elem){
     free(aux);
     return 1;
 }
+
+void mostra_lista(Lista lst){
+    Lista aux=lst;
+
+    while(aux!=lst){
+        aux=lst;
+        printf("%d\n",aux->info);
+        aux=aux->prox;
+    }
+}
+
+int get_elem_pos(Lista lst,int pos, int *elem){
+    if(lista_vazia(lst)||pos<=0)
+        return 0;
+
+    int cont=1;
+    Lista aux;
+
+    while(aux->prox!=lst&&cont<pos){
+        aux=lst
+    }
+}
