@@ -1,6 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-#include "lista.h"
+#include "lista_ord.h"
 
 int main(){
     int op=0;
