@@ -98,11 +98,12 @@ int insere(Caractere car, char elem){
     else{
         int i,aux=0;
 
-        while (elem>=lst->caractere[aux])
+        while (elem>=car->caractere[aux])
             aux++;
         
         for(i=car->Fim;i>aux;i--)
             car->caractere[i]=car->caractere[i-1];
+        car->caractere[aux]=elem;
     }
     car->Fim++;
     return 1;//Sucesso
@@ -123,8 +124,8 @@ Pós-condição: Deve retornar 1
 
 */
 
-int remove(Caractere car, char elem){
-    if(car==NULL||lista_vazia(car)==1||elem<car->caractere[0]||elem>car->caractere[Fim-1])
+int remove_elem(Caractere car, char elem){
+    if(car==NULL||lista_vazia(car)==1||elem<car->caractere[0]||elem>car->caractere[car->Fim-1])
         return 0;//Erro
     
     int i,aux=0;
@@ -138,7 +139,7 @@ int remove(Caractere car, char elem){
     for(i=aux+1;i<car->Fim;i++)
         car->caractere[i-1]=car->caractere[i];
     
-    car->caractere[car->Fim-1]='';
+    car->caractere[car->Fim-1]='\0';
     car->Fim--;
     return 1;//Sucesso
 }
@@ -228,47 +229,55 @@ int remove_vogal(Caractere car){
         switch (car->caractere[i])
         {
         case 'a':
-            if(remove(car,'a')==0)
+            if(remove_elem(car,'a')==0)
                 return 0;
             break;
+            
         case 'A':
-            if(remove(car,'A')==0)
+            if(remove_elem(car,'A')==0)
                 return 0;
             break;
+            
         case 'e':
-            if(remove(car,'e')==0)
+            if(remove_elem(car,'e')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'E':
-            if(remove(car,'E')==0)
+            if(remove_elem(car,'E')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'i':
-            if(remove(car,'i')==0)
+            if(remove_elem(car,'i')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'I':
-            if(remove(car,'I')==0)
+            if(remove_elem(car,'I')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'o':
-            if(remove(car,'o')==0)
+            if(remove_elem(car,'o')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'O':
-            if(remove(car,'O')==0)
+            if(remove_elem(car,'O')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'u':
-            if(remove(car,'u')==0)
+            if(remove_elem(car,'u')==0)
                 return 0;
-            break;
+            break;    
+            
         case 'U':
-            if(remove(car,'U')==0)
+            if(remove_elem(car,'U')==0)
                 return 0;
-            break;
-        default:
-            break;
+            break;    
+
         }
     }
     return 1;
@@ -295,10 +304,10 @@ int remove_elem_pos(Caractere car, int pos){
 
     char c;
 
-    if(get_elem_pos(car,pos,*c)==0)
+    if(get_elem_pos(car,pos,&c)==0)
         return 0;//Falha
 
-    if(remove(car,c)==0)
+    if(remove_elem(car,c)==0)
         return 0;//Falha
     
     return 1;//Sucesso
@@ -344,13 +353,44 @@ Caractere intercalar(Caractere car1, Caractere car2){
     
     Caractere car3=cria_lista();
     int i;
+    char elem1,elem2;
 
     for(i=0;i<max;i++){
-        if(insere(car3,car1->caractere[i])==0)
-            return NULL;
-        if(insere(car3,car2->caractere[i])==0)
-            return NULL;
+        if(get_elem_pos(car1,i,&elem1))
+            if(insere(car3,elem1)==0)
+                return NULL;
+            
+        if(get_elem_pos(car2,i,&elem2))
+            if(insere(car3,elem2)==0)
+                return NULL;
     }   
-    
     return car3;
+}
+
+/*  mostra_lista(Caractere car)
+Entrada: Uma lista
+
+Pré-condição: A lista nao deve estar vazia e deve ser alocada
+
+Processo: Verifica as pre-condicoes. Em seguida, percorre cada no da lista e imprime a informacao
+de cada um posicao de caractere na tela.
+
+Saída: Nenhuma
+
+Pós-condição: Nenhuma
+
+*/
+
+void mostra_lista(Caractere car){
+    if(car==NULL||lista_vazia(car))
+        printf("\nA lista esta vazia.");
+    else{
+        int i;
+        for(i=0;i<max;i++){
+            
+            
+                printf("%c\n",car->caractere[i]);
+            
+        }
+    }
 }
