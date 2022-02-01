@@ -320,7 +320,7 @@ Pré-condição: A lista deve estar alocada
 
 Processo: Verifica a pre-condicao, em seguida retorna o valor do fim da lista, que indica o tamanho.
 
-Saída: Reotrna o tamanho da lista. -1 se a lista nao estiver alocada. 
+Saída: Retorna o tamanho da lista. -1 se a lista nao estiver alocada. 
 
 Pós-condição: Nao deve retornar -1.
 
