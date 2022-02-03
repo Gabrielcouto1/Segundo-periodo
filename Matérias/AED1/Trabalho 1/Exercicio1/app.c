@@ -1,12 +1,11 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-#include "lista_ord.h"
+#include "lista.h"
 
 int main(){
     Caractere lista1,lista2,lista3;
     int op,qtd,i,pos,lst;
     char elem,c;
-    
 
     while (1){
         printf("\n---------------Menu---------------\n");

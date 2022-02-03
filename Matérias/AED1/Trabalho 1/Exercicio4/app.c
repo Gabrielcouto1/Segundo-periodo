@@ -66,7 +66,7 @@ int main(){
                             printf("\nNao foi possivel remover o elemento da lista.\n");
                         break;
                     case 4:
-                        mostra_lista(&lista1);
+                        mostra_lista(lista1);
                         break;
                     case 5:
                         printf("\nTamanho da lista: %d",tam_lista(lista1));
@@ -88,7 +88,7 @@ int main(){
                             printf("\nNao foi possivel inverter a lista.");
                         else{
                             printf("\nLista invertida: \n");
-                            mostra_lista(&lista3);
+                            mostra_lista(lista3);
                         }
                         break;
                     case 9:
@@ -152,7 +152,7 @@ int main(){
                             printf("\nNao foi possivel remover o elemento da lista.\n");
                         break;
                     case 4:
-                        mostra_lista(&lista2);
+                        mostra_lista(lista2);
                         break;
                     case 5:
                         printf("\nTamanho da lista: %d",tam_lista(lista2));
@@ -174,7 +174,7 @@ int main(){
                             printf("\nNao foi possivel inverter a lista.");
                         else{
                             printf("\nLista invertida: \n");
-                            mostra_lista(&lista4);
+                            mostra_lista(lista4);
                         }
                         break;
                     case 9:
@@ -197,7 +197,7 @@ int main(){
                     printf("\nNao foi possivel intercalar as listas.");
                 else{
                     printf("\nLista intercalada:\n");
-                    mostra_lista(&lista5);
+                    mostra_lista(lista5);
                 }
                 break;
             default:

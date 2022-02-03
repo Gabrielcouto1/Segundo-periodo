@@ -1,22 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "listaex2.h"
+#include "lista.h"
 
 int main(){
-
-    int ativo = 0, n = 0;
     Lista lst1,lst2,lst3;
-    int x,qtd,pos,i,op;
+    int qtd,pos,i,op,n;
     char elem[tam];
 
     while(1){
         printf("\n---------------Menu---------------\n");
-        printf("\n     O que deseja fazer?\n");
-        printf("\n[1]: Manipular lista 1;\n");
+        printf("     O que deseja fazer?\n");
+        printf("[1]: Manipular lista 1;\n");
         printf("[2]: Manipular lista 2;\n");
         printf("[3]: Concatenar as duas listas;\n");
         printf("[4]: Encerrar o programa\n");
+        printf("Insira a operacao: ");
         scanf("%d",&op);
         setbuf(stdin, NULL);
         if(op==4)
@@ -25,7 +24,7 @@ int main(){
         switch(op){
             case 1:
                 while(1){
-                    printf("\n[1] Criar lista\n");
+                    printf("\n\n[1] Criar lista\n");
                     printf("[2] Inserir uma string na lista\n");
                     printf("[3] Remover uma string na lista\n");
                     printf("[4] Imprimir Lista\n");
@@ -36,6 +35,7 @@ int main(){
                     printf("[9] Remover menor\n");
                     printf("[10] Mostrar tamanho da lista\n");
                     printf("[11] Voltar\n");
+                    printf("Insira a operacao: ");
                     scanf("%d", &n);
                     setbuf(stdin, NULL);
                     if(n==11)
@@ -99,12 +99,12 @@ int main(){
                             break;
 
                         case 7:
-                            printf("\nInsira a posicao que deseja pegar o elemnto: ");
+                            printf("\nInsira a posicao que deseja pegar o elemento: ");
                             scanf("%d",&pos);
                             setbuf(stdin, NULL);
 
                             strcpy(elem,get_elem_pos(lst1,pos));
-                            if(strcpy(elem,"\0")==0)
+                            if(strcmp(elem,"\0")==0)
                                 printf("\nNao foi possivel pegar o elemento.");
                             else    
                                 printf("\nO elemento da posicao %d eh %s.",pos,elem);
@@ -124,10 +124,11 @@ int main(){
                                 printf("\nO elemento foi inserido.");
                             break;
                         case 9:
-                            if(remove_menor(lst1)==0)
-                                printf("\nNao foi possivel remover o menor elemento.");
+                            strcpy(elem,remove_menor(lst1));
+                            if(strcmp(elem,"\0")==0)
+                                printf("\nNao foi possivel remover o menor elemento");
                             else
-                                printf("\nO menor elemento foi removido.");
+                                printf("\nO menor elemento (%s) foi removido.",elem);
                             break;
                         case 10:
                             printf("\nTamanho da lista: %d",tamanho_lista(lst1));
@@ -141,7 +142,7 @@ int main(){
                 break;  
             case 2: 
                 while(1){
-                    printf("\n[1] Criar lista\n");
+                    printf("\n\n[1] Criar lista\n");
                     printf("[2] Inserir uma string na lista\n");
                     printf("[3] Remover uma string na lista\n");
                     printf("[4] Imprimir Lista\n");
@@ -152,6 +153,7 @@ int main(){
                     printf("[9] Remover menor\n");
                     printf("[10] Mostrar tamanho da lista\n");
                     printf("[11] Voltar\n");
+                    printf("Insira a operacao: ");
                     scanf("%d", &n);
                     setbuf(stdin, NULL);
                     if(n==11)
@@ -220,7 +222,7 @@ int main(){
                             setbuf(stdin, NULL);
 
                             strcpy(elem,get_elem_pos(lst2,pos));
-                            if(strcpy(elem,"\0")==0)
+                            if(strcmp(elem,"\0")==0)
                                 printf("\nNao foi possivel pegar o elemento.");
                             else    
                                 printf("\nO elemento da posicao %d eh %s.",pos,elem);
@@ -241,10 +243,13 @@ int main(){
                                 printf("\nO elemento foi inserido.");
                             break;
                         case 9:
-                            if(remove_menor(lst2)==0)
-                                printf("\nNao foi possivel remover o menor elemento.");
-                            else
-                                printf("\nO menor elemento foi removido.");
+                            strcpy(elem,remove_menor(lst2));
+                            if(strcmp(elem,"\0")==0)
+                                printf("\nNao foi possivel remover o menor elemento");
+                            else{
+                                printf("\nO menor elemento (%s) foi removido.",elem);
+                            }
+                                
                             break;
                         case 10:
                             printf("\nTamanho da lista: %d",tamanho_lista(lst2));

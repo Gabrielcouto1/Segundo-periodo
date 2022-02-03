@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1643925775 source:c:\users\kemue\onedrive\Área de trabalho\ex6_trab\main.c
+	<stdio.h>
+	<stdlib.h>
+	"numero.h"
+
+1643815049 c:\users\kemue\onedrive\Área de trabalho\ex6_trab\numero.h
+
+1643832300 source:c:\users\kemue\onedrive\Área de trabalho\ex6_trab\numero.c
+	"numero.h"
+	<stdio.h>
+	<stdlib.h>
+

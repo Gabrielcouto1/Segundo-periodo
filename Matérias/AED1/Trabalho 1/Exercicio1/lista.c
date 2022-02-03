@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista_ord.h"
+#include "lista.h"
 
 struct caracteres{
     char caractere[max];
@@ -386,11 +386,8 @@ void mostra_lista(Caractere car){
         printf("\nA lista esta vazia.");
     else{
         int i;
-        for(i=0;i<max;i++){
-            
-            
-                printf("%c\n",car->caractere[i]);
-            
-        }
+        for(i=0;i<max;i++)
+                if(car->caractere[i]!='\0')
+                    printf("%c\n",car->caractere[i]);
     }
 }
