@@ -3,7 +3,7 @@
 #include "lista.h"
 
 int main(){
-    int op=0;
+    int op;
 
     while (1){
         printf("\n---------------Menu---------------\n");
@@ -47,7 +47,7 @@ int main(){
 
                 break;
             default:
-                fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");
+                fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 7 para as operacoes.\n");
                 break;
         }
     }
