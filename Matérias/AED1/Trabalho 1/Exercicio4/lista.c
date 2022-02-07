@@ -74,7 +74,7 @@ int insere_elem(Lista *lst,int elem){
 /*  remove_elem(Lista *lst,int elem)
 Entrada: Ponteiro para uma lista e um elemento inteiro
 
-Pré-condição: A lista nao deve estar vazia
+Pré-condição: A lista nao deve estar vazia e deve estar alocada
 
 Processo: Verifica a pre-condicao. Em seguida cria uma lista auxiliar que aponta para o primeiro no.
 Verifica se o elemento a ser removido esta no primeiro no. Se estiver, remove ele e faz a lista apontar
@@ -88,7 +88,7 @@ Pós-condição: Deve retornar 1
 */
 
 int remove_elem(Lista *lst,int elem){
-    if (lista_vazia(*lst)==1)
+    if (*lst==NULL||lista_vazia(*lst)==1)
         return 0;//Falha
 
     Lista aux=*lst; //Ponteiro aux para o primeiro no 
@@ -188,7 +188,7 @@ Pós-condição: Deve retornar 1
 */
 
 int esvazia_lista(Lista *lst){
-    if(lst==NULL)//parametro invalido
+    if(*lst==NULL)//parametro invalido
         return 0;//Falha
     
     while(*lst!=NULL){

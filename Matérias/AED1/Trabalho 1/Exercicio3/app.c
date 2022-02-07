@@ -5,7 +5,7 @@
 int main(){
     Lista lista1,lista2,lista3;
     int op,qtd,i,pos,lst;
-    float elem;
+    float elem,tam;
 
     while (1){
         printf("\n---------------Menu---------------\n");
@@ -20,162 +20,176 @@ int main(){
 
         switch(lst){
             case 1:
-                printf("\n---------------Menu---------------\n");
-                printf("\n     O que deseja fazer?\n");
-                printf("[1]: Criar uma lista;\n");
-                printf("[2]: Inserir elementos na lista;\n");
-                printf("[3]: Remover um elemento da lista;\n");
-                printf("[4]: Mostrar a lista na tela;\n");
-                printf("[5]: Mostrar o tamanho da lista;\n");
-                printf("[6]: Esvaziar a lista;\n");
-                printf("[7]: Pegar um elemento pela posicao;\n");
-                printf("[8]: Remover um elemento pela posicao;\n");
-                printf("[9]: Voltar.\n");
-                printf("\tInsira a operacao: ");
-                scanf("%d",&op);
-                printf("\n----------------------------------\n");
-                if(op==9)
-                    break;
-
-                switch(op){
-                    case 1:
-                        lista1=cria_lista();
-                        printf("\n\t\t\tA lista foi criada com sucesso!");
-
+                while(1){
+                    printf("\n---------------Menu---------------\n");
+                    printf("\n     O que deseja fazer?\n");
+                    printf("[1]: Criar uma lista;\n");
+                    printf("[2]: Inserir elementos na lista;\n");
+                    printf("[3]: Remover um elemento da lista;\n");
+                    printf("[4]: Mostrar a lista na tela;\n");
+                    printf("[5]: Mostrar o tamanho da lista;\n");
+                    printf("[6]: Esvaziar a lista;\n");
+                    printf("[7]: Pegar um elemento pela posicao;\n");
+                    printf("[8]: Remover um elemento pela posicao;\n");
+                    printf("[9]: Voltar.\n");
+                    printf("\tInsira a operacao: ");
+                    scanf("%d",&op);
+                    printf("\n----------------------------------\n");
+                    if(op==9)
                         break;
-                    case 2:
-                        printf("\nInsira a quantidade de elementos que deseja colocar na lista: ");
-                        scanf("%d",&qtd);
 
-                        for(i=0;i<qtd;i++){
-                            printf("\nInsira o elemento: ");
+                    switch(op){
+                        case 1:
+                            lista1=cria_lista();
+                            printf("\n\t\t\tA lista foi criada com sucesso!");
+
+                            break;
+                        case 2:
+                            printf("\nInsira a quantidade de elementos que deseja colocar na lista: ");
+                            scanf("%d",&qtd);
+
+                            for(i=0;i<qtd;i++){
+                                printf("\nInsira o elemento: ");
+                                scanf("%f",&elem);
+
+                                if(insere_ord(&lista1,elem)==0)
+                                    fprintf(stderr,"\nNao foi possivel inserir o elemento.");
+
+                            }
+
+                            break;
+                        case 3:
+                            printf("\nInsira o elemento que deseja remover da lista: ");
                             scanf("%f",&elem);
 
-                            if(insere_ord(&lista1,elem)==0)
-                                fprintf(stderr,"\nNao foi possivel inserir o elemento.");
+                            if(remove_ord(&lista1,elem)==0)
+                                printf("\nNao foi possivel remover o elemento da lista.\n");
+                            break;
+                        case 4:
+                            mostra_lista(lista1);
+                            break;
+                        case 5:
+                            tam=tam_lista(lista2);
+                            if(tam==-1)
+                                printf("\nNao foi possivel pegar o tamanho da lista.");
+                            else
+                                printf("\nTamanho da lista: %.0f",tam_lista(lista1));
+                            break;
+                        case 6:
+                            if(esvazia_lista(&lista1)==0)
+                                printf("\nNao foi possivel esvaziar a lista.");
 
-                        }
+                            break;
+                        case 7:
+                            printf("\nInsira a posicao que deseja pegar o elemento: ");
+                            scanf("%d",&pos);
+                            if(get_elem_pos(lista1,pos,&elem)==0)
+                                printf("\nNao foi possivel pegar o elemento dessa posicao.");
+                            else    
+                                printf("\nO elemento da posicao %d eh %.2f.",pos,elem);
 
-                        break;
-                    case 3:
-                        printf("\nInsira o elemento que deseja remover da lista: ");
-                        scanf("%f",&elem);
+                            break;
+                        case 8:
+                            printf("\nInsira a posicao que deseja remover: " );
+                            scanf("%d",&pos);
 
-                        if(remove_ord(&lista1,elem)==0)
-                            printf("\nNao foi possivel remover o elemento da lista.\n");
-                        break;
-                    case 4:
-                        mostra_lista(lista1);
-                        break;
-                    case 5:
-                        printf("\nTamanho da lista: %.0f",tam_lista(lista1));
-                        break;
-                    case 6:
-                        if(esvazia_lista(&lista1)==0)
-                            printf("\nNao foi possivel esvaziar a lista.");
-
-                        break;
-                    case 7:
-                        printf("\nInsira a posicao que deseja pegar o elemento: ");
-                        scanf("%d",&pos);
-                        if(get_elem_pos(lista1,pos,&elem)==0)
-                            printf("\nNao foi possivel pegar o elemento dessa posicao.");
-                        else    
-                            printf("\nO elemento da posicao %d eh %.2f.",pos,elem);
-
-                        break;
-                    case 8:
-                        printf("\nInsira a posicao que deseja remover: " );
-                        scanf("%d",&pos);
-                        
-                        if(remove_posicao(&lista1,pos)==0)
-                            printf("\nNao foi possivel remover o elemento da posicao inserida.");
-                        else   
-                            printf("\nElemento removido com sucesso.");
-                        break;
-                    default:
-                        fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");
-                        break;
+                            if(remove_posicao(&lista1,pos)==0)
+                                printf("\nNao foi possivel remover o elemento da posicao inserida.");
+                            else   
+                                printf("\nElemento removido com sucesso.");
+                            break;
+                        default:
+                            fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");
+                            break;
+                    }
                 }
+                
                 break;
             case 2:
-                printf("\n---------------Menu---------------\n");
-                printf("\n     O que deseja fazer?\n");
-                printf("[1]: Criar uma lista;\n");
-                printf("[2]: Inserir elementos na lista;\n");
-                printf("[3]: Remover um elemento da lista;\n");
-                printf("[4]: Mostrar a lista na tela;\n");
-                printf("[5]: Mostrar o tamanho da lista;\n");
-                printf("[6]: Esvaziar a lista;\n");
-                printf("[7]: Pegar um elemento pela posicao;\n");
-                printf("[8]: Remover um elemento pela posicao;\n");
-                printf("[9]: Voltar.\n");
-                printf("\tInsira a operacao: ");
-                scanf("%d",&op);
-                printf("\n----------------------------------\n");
-                if(op==9)
-                    break;
-
-                switch(op){
-                    case 1:
-                        lista2=cria_lista();
-                        printf("\n\t\t\tA lista foi criada com sucesso!");
-
+                while(1){
+                    printf("\n---------------Menu---------------\n");
+                    printf("\n     O que deseja fazer?\n");
+                    printf("[1]: Criar uma lista;\n");
+                    printf("[2]: Inserir elementos na lista;\n");
+                    printf("[3]: Remover um elemento da lista;\n");
+                    printf("[4]: Mostrar a lista na tela;\n");
+                    printf("[5]: Mostrar o tamanho da lista;\n");
+                    printf("[6]: Esvaziar a lista;\n");
+                    printf("[7]: Pegar um elemento pela posicao;\n");
+                    printf("[8]: Remover um elemento pela posicao;\n");
+                    printf("[9]: Voltar.\n");
+                    printf("\tInsira a operacao: ");
+                    scanf("%d",&op);
+                    printf("\n----------------------------------\n");
+                    if(op==9)
                         break;
-                    case 2:
-                        printf("\nInsira a quantidade de elementos que deseja colocar na lista: ");
-                        scanf("%d",&qtd);
-
-                        for(i=0;i<qtd;i++){
-                            printf("\nInsira o elemento: ");
+    
+                    switch(op){
+                        case 1:
+                            lista2=cria_lista();
+                            printf("\n\t\t\tA lista foi criada com sucesso!");
+    
+                            break;
+                        case 2:
+                            printf("\nInsira a quantidade de elementos que deseja colocar na lista: ");
+                            scanf("%d",&qtd);
+    
+                            for(i=0;i<qtd;i++){
+                                printf("\nInsira o elemento: ");
+                                scanf("%f",&elem);
+    
+                                if(insere_ord(&lista2,elem)==0)
+                                    fprintf(stderr,"\nNao foi possivel inserir o elemento.");
+    
+                            }
+    
+                            break;
+                        case 3:
+                            printf("\nInsira o elemento que deseja remover da lista: ");
                             scanf("%f",&elem);
-
-                            if(insere_ord(&lista2,elem)==0)
-                                fprintf(stderr,"\nNao foi possivel inserir o elemento.");
-
-                        }
-
-                        break;
-                    case 3:
-                        printf("\nInsira o elemento que deseja remover da lista: ");
-                        scanf("%f",&elem);
-
-                        if(remove_ord(&lista2,elem)==0)
-                            printf("\nNao foi possivel remover o elemento da lista.\n");
-                        break;
-                    case 4:
-                        mostra_lista(lista2);
-                        break;
-                    case 5:
-                        printf("\nTamanho da lista: %.0f",tam_lista(lista2));
-                        break;
-                    case 6:
-                        if(esvazia_lista(&lista2)==0)
-                            printf("\nNao foi possivel esvaziar a lista.");
-
-                        break;
-                    case 7:
-                        printf("\nInsira a posicao que deseja pegar o elemento: ");
-                        scanf("%d",&pos);
-                        if(get_elem_pos(lista2,pos,&elem)==0)
-                            printf("\nNao foi possivel pegar o elemento dessa posicao.");
-                        else    
-                            printf("\nO elemento da posicao %d eh %.2f.",pos,elem);
-
-                        break;
-                    case 8:
-                        printf("\nInsira a posicao que deseja remover: " );
-                        scanf("%d",&pos);
-                        
-                        if(remove_posicao(&lista1,pos)==0)
-                            printf("\nNao foi possivel remover o elemento da posicao inserida.");
-                        else   
-                            printf("\nElemento removido com sucesso.");
-                        break;
-                    default:
-                        fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");
-                        break;
+    
+                            if(remove_ord(&lista2,elem)==0)
+                                printf("\nNao foi possivel remover o elemento da lista.\n");
+                            break;
+                        case 4:
+                            mostra_lista(lista2);
+                            break;
+                        case 5:
+                            tam=tam_lista(lista2);
+                            if(tam==-1)
+                                printf("\nNao foi possivel pegar o tamanho da lista.");
+                            else
+                                printf("\nTamanho da lista: %.0f",tam_lista(lista2));
+                            break;
+                        case 6:
+                            if(esvazia_lista(&lista2)==0)
+                                printf("\nNao foi possivel esvaziar a lista.");
+    
+                            break;
+                        case 7:
+                            printf("\nInsira a posicao que deseja pegar o elemento: ");
+                            scanf("%d",&pos);
+                            if(get_elem_pos(lista2,pos,&elem)==0)
+                                printf("\nNao foi possivel pegar o elemento dessa posicao.");
+                            else    
+                                printf("\nO elemento da posicao %d eh %.2f.",pos,elem);
+    
+                            break;
+                        case 8:
+                            printf("\nInsira a posicao que deseja remover: " );
+                            scanf("%d",&pos);
+                            
+                            if(remove_posicao(&lista1,pos)==0)
+                                printf("\nNao foi possivel remover o elemento da posicao inserida.");
+                            else   
+                                printf("\nElemento removido com sucesso.");
+                            break;
+                        default:
+                            fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");
+                            break;
+                    }
                 }
+                
                 break;
             case 3:
                 printf("\n---------------Menu---------------\n");

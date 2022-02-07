@@ -125,7 +125,7 @@ Pós-condição: Deve retornar 1
 */
 
 int remove_elem(Caractere car, char elem){
-    if(car==NULL||lista_vazia(car)==1||elem<car->caractere[0]||elem>car->caractere[car->Fim-1])
+    if(car==NULL||lista_vazia(car)||elem<car->caractere[0]||elem>car->caractere[car->Fim-1])
         return 0;//Erro
     
     int i,aux=0;
@@ -197,7 +197,7 @@ Pós-condição: Deve retornar 1 e o caractere elemento deve conter o elemento d
 */
 
 int get_elem_pos(Caractere car, int pos, char *elem){
-    if(pos>=car->Fim||pos>max)
+    if(car==NULL||lista_vazia(car)||pos>=car->Fim||pos>max)
         return 0;
 
     else
@@ -221,7 +221,7 @@ Pós-condição: Deve retornar 1 e nao deve ter mais nenhuma vogal na lista
 */
 
 int remove_vogal(Caractere car){
-    if(car==NULL||lista_vazia(car)==1)
+    if(car==NULL||lista_vazia(car))
         return 0;//Falha
     
     int i;
@@ -298,7 +298,7 @@ Pós-condição: Deve retornar 1
 */
 
 int remove_elem_pos(Caractere car, int pos){
-    if(pos>=car->Fim||pos>max)
+    if(car==NULL||lista_vazia(car)||pos>=car->Fim||pos>max)
         return 0;
 
 

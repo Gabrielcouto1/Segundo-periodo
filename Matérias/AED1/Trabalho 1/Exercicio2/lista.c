@@ -168,11 +168,11 @@ Pós-condição: A lista nao deve ser NULL
 
 */
 
-Lista esvazia_lista(Lista lst){
-    apaga_lista(&lst);
-    lst=cria_lista();
+Lista esvazia_lista(Lista *lst){
+    apaga_lista(lst);
+    *lst=cria_lista();
 
-    return lst;
+    return *lst;
 }
 
 /*  apaga_lista(Lista *lst)

@@ -9,7 +9,7 @@ int lista_cheia(Lista lst);
 int insere_elem(Lista lst,char elem[tam]);
 int remove_elem(Lista lst, char elem[tam]);
 const char * get_elem_pos(Lista lst,int pos);
-Lista esvazia_lista(Lista lst);
+Lista esvazia_lista(Lista *lst);
 void apaga_lista(Lista *lst);
 void mostra_lista(Lista lst);
 int insere_elem_pos(Lista lst, int pos, char elem[tam]);

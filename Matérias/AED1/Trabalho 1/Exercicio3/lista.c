@@ -93,7 +93,7 @@ int insere_ord(Lista *l,float elem){
 /*  remove_ord(Lista *lst,float elem)
 Entrada: Um ponteiro para uma lista e um elemento float
 
-Pré-condição: A lista nao deve estar vazia
+Pré-condição: A lista nao deve estar vazia e deve estar alocada
 
 Processo: Verifica a pre-condicao. Em seguida cria duas listas auxiliares. Uma delas recebe o ponteiro 
 da lista inserida na funcao. Depois, a funcao percoretodos os nos ate encontrar o elemento a ser removido.
@@ -107,7 +107,7 @@ Pós-condição: Deve ser 1
 */
 
 int remove_ord(Lista *lst,float elem){
-    if(lista_vazia(*lst)==1)
+    if(*lst==NULL||lista_vazia(*lst)==1)
         return 0;
 
     Lista N,aux;
@@ -130,17 +130,19 @@ int remove_ord(Lista *lst,float elem){
 /*  tam_lista(Lista lst)
 Entrada: Uma lista  
 
-Pré-condição: Nenhuma
+Pré-condição: Deve estar alocada
 
 Processo: Retorna a informacao presente no primeiro no da lista, que eh o tamanho.
 
-Saída: O tamanho da lista
+Saída: O tamanho da lista ou -1 se houver falha
 
 Pós-condição: Nenhuma
 
 */
 
 float tam_lista(Lista lst){
+    if(lst==NULL)
+        return -1;
     return lst->info;
 }
 
@@ -159,7 +161,7 @@ Pós-condição: Nenhuma
 */
 
 void mostra_lista(Lista lst){
-    if(lista_vazia(lst)==1||lst==NULL)
+    if(lst==NULL||lista_vazia(lst))
         printf("\nA lista esta vazia.\n");
 
     else{
