@@ -282,3 +282,94 @@ int insere_elem_pos(Lista *lst, int pos, int elem){
     
     return 1;
 }
+
+/*  remove_elem(Lista *lst,int elem)
+Entrada: Ponteiro para uma lista e um numero inteiro
+
+Pré-condição: A lista deve estar alocada
+
+Processo: Verifica as pre condicoes. A funcao percorre a lista no por no e em seguida remove
+o elemento e exclui o no em que ele se encontra.
+
+Saída: 1 se for sucesso e 0 se tiver falha
+
+Pós-condição: Deve retornar 1
+
+*/
+
+int remove_elem(Lista *lst,int elem){
+    if(*lst==NULL)  
+        return 0;
+
+    Lista aux=*lst;
+    Lista N;
+    int x;
+
+    while(aux->info!=elem){
+        if(aux->prox==*lst)
+            break;
+        N=aux;
+        aux=aux->prox;
+    }
+
+    if(aux==*lst)
+        return remove_final(lst,&x);
+
+    else{
+        N->prox=aux->prox;
+        free(aux);
+    }
+    return 1;
+}
+
+/*  remove_pares(Lista *lst)
+Entrada: Ponteiro para uma lista
+
+Pré-condição: A lista deve estar alocada
+
+Processo: Verifica as pre condicoes. A funcao percorre a lista no por no e armazena 
+os valores contidos em cada no em um vetor de int. Em seguida, percorre esse vetor
+e pega os valores pares e chama a funcao remove_elem, que foi feita excluisivamente
+para esta operacao. 
+
+Saída: 1 se for sucesso e 0 se tiver falha
+
+Pós-condição: Deve retornar 1
+
+*/
+
+int remove_pares(Lista *lst){
+    if(*lst==NULL)
+        return 0;
+    
+    Lista aux=*lst;
+    int tam,i;
+    tam=tamanho_lista(*lst);
+
+    if(tam==-1)
+        return 0;
+    
+
+    int info[tam];
+    
+    for(i=0;i<tam;i++){
+        info[i]=aux->info;
+        aux=aux->prox;
+    }
+
+    for(i=0;i<tam;i++){
+        if((info[i]%2)==0)
+            if(remove_elem(lst,info[i])==0)
+                return 0;
+    }
+
+    if(tamanho_lista(*lst)==1){
+        if((aux->info%2)==0){
+            int x;
+            return remove_inicio(lst,&x);
+        }
+            
+    }
+
+    return 1;
+}

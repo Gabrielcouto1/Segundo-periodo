@@ -69,7 +69,10 @@ Pós-condição: Deve retornar 1
 
 */
 
-int insere_ord(Lista *l,float elem){
+int insere_ord(Lista *lst,float elem){
+    if(*lst==NULL)
+        return 0;
+
     Lista N,aux;
 
     N=(Lista)malloc(sizeof(struct no));
@@ -78,14 +81,14 @@ int insere_ord(Lista *l,float elem){
         return 0;
 
     N->info = elem;
-    aux = *l;
+    aux = *lst;
 
     while (aux->prox!=NULL&&(aux->prox)->info>elem)
         aux=aux->prox;
 
     N->prox=aux->prox;
     aux->prox=N;
-    (*l)->info++;
+    (*lst)->info++;
 
     return 1;
 }
@@ -234,27 +237,30 @@ int get_elem_pos(Lista lst, int pos, float *elem){
 /*   remove_posicao(Lista *lst, int pos)
 Entrada: Recebe um ponteiro para uma lista e um inteiro representando a posicao
 
-Pré-condição: Nenhuma
+Pré-condição: Deve estar alocada e nao pode estar vazia
 
 Processo: Chama a funcao get_elem_pos com a posicao inserida pelo usuario e em seguida
 remove o elemento dessa posicao.
 
-Saída: 0 se for falha e 1 se for sucesso
+Saída: Retorna o elemento a ser removido, retorna -1 se for falha
 
-Pós-condição: Deve retornar 1
+Pós-condição: Nao deve retornar -1
 
 */
 
-int remove_posicao(Lista *lst, int pos){
+float remove_posicao(Lista *lst, int pos){
+    if(*lst==NULL||lista_vazia(*lst))
+        return -1;
+    
     float elem;
 
     if(get_elem_pos(*lst,pos,&elem)==0)
-        return 0;
+        return -1;
     
     if(remove_ord(lst,elem)==0)
-        return 0;
+        return -1;
 
-    return 1;
+    return elem;
 }
 
 /*  iguais(Lista lst1, Lista lst2)

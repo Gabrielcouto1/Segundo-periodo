@@ -29,6 +29,9 @@ Lista cria_lista(){
 
     if(lst!=NULL){
         lst->Fim=0;
+        int i;
+        for(i=0;i<max;i++)
+            strcpy(lst->info[i],"\0");
     }
 
     return lst;
@@ -169,6 +172,8 @@ Pós-condição: A lista nao deve ser NULL
 */
 
 Lista esvazia_lista(Lista *lst){
+    if(*lst==NULL)
+        return cria_lista();
     apaga_lista(lst);
     *lst=cria_lista();
 
@@ -189,8 +194,13 @@ Pós-condição: Deve estar NULL
 */
 
 void apaga_lista(Lista *lst){
-    free(*lst);
-    *lst=NULL;
+    if(*lst==NULL)  
+        return;
+    else{
+        free(*lst);
+        *lst=NULL;
+    }
+    
 }
 
 /*  mostra_lista(Lista car)

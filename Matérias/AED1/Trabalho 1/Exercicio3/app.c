@@ -93,10 +93,12 @@ int main(){
                             printf("\nInsira a posicao que deseja remover: " );
                             scanf("%d",&pos);
 
-                            if(remove_posicao(&lista1,pos)==0)
+                            elem=remove_posicao(&lista1,pos);
+
+                            if(elem==-1)
                                 printf("\nNao foi possivel remover o elemento da posicao inserida.");
                             else   
-                                printf("\nElemento removido com sucesso.");
+                                printf("\nElemento (%f) removido com sucesso.",elem);
                             break;
                         default:
                             fprintf(stderr,"\n\t\t\t Insira os numeros de 1 a 5 para as operacoes.\n");

@@ -3,7 +3,7 @@
 #include "lista.h"
 
 int main(){
-    Caractere lista1,lista2,lista3;
+    Caractere lista1=NULL,lista2=NULL,lista3=NULL;
     int op,qtd,i,pos,lst;
     char elem,c;
 

@@ -80,7 +80,10 @@ int main(){
 
                 break;
             case 8:
-
+                if(remove_pares(&lista)==0)
+                    printf("\nNao foi possivel remover.");
+                else 
+                    printf("\nOs elementos pares foram removidos.");
                 break;
             case 9:
                 tam=tamanho_lista(lista);

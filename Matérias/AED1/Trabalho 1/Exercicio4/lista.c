@@ -62,11 +62,11 @@ int insere_elem(Lista *lst,int elem){
     Lista N=(Lista)malloc(sizeof(struct no));
 
     if(N==NULL)
-        return 0;//No nao alocado- falha
+        return 0;
 
-    N->info=elem;//Insere o valor do elem
-    N->prox=*lst;//Aponta para o primeiro no atual da lista
-    *lst=N;//Faz a lista apontar para o novo no
+    N->info=elem;
+    N->prox=*lst;
+    *lst=N;
 
     return 1;
 }
@@ -89,26 +89,26 @@ Pós-condição: Deve retornar 1
 
 int remove_elem(Lista *lst,int elem){
     if (*lst==NULL||lista_vazia(*lst)==1)
-        return 0;//Falha
+        return 0;
 
-    Lista aux=*lst; //Ponteiro aux para o primeiro no 
-    //Trata elemento=primeiro no da lista
+    Lista aux=*lst;  
+    
 
     if(elem==(*lst)->info){
-        *lst=aux->prox;//Lista aponta par ao segundo no 
-        free(aux);//Libera memoria
+        *lst=aux->prox;
+        free(aux);
         return 1;
     }
 
     while(aux->prox!=NULL&&aux->prox->info!=elem)
-        aux=aux->prox;//percorrimento ate achar o elemento ou o final da lista
+        aux=aux->prox;
     
-    if(aux->prox==NULL) //Trata do final da lista
-        return 0;//Falha
+    if(aux->prox==NULL) 
+        return 0;
     
-    Lista aux2=aux->prox;//Aponta o no a ser removido
-    aux->prox=aux2->prox;//Retura o no da lista
-    free(aux2);//Libera a lista auxiliar
+    Lista aux2=aux->prox;
+    aux->prox=aux2->prox;
+    free(aux2);
 
     return 1;//Sucesso
 }

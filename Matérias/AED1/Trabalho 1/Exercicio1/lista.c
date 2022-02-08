@@ -27,8 +27,13 @@ Caractere cria_lista(){
 
     car = (Caractere)malloc(sizeof(struct caracteres));
 
-    if(car!= NULL)
+    if(car!= NULL){
         car->Fim=0;
+        int i;
+        for(i=0;i<max;i++)
+            car->caractere[i]='\0';
+    }
+        
     
     return car;
 }
@@ -348,7 +353,7 @@ Pós-condição: A nova lista deve ser diferente de NULL
 */
 
 Caractere intercalar(Caractere car1, Caractere car2){
-    if(car1==NULL||lista_vazia(car1)==1||car2==NULL||lista_vazia(car2)==1)
+    if(car1==NULL||car2==NULL||lista_vazia(car1)==1||lista_vazia(car2)==1)
         return 0;//Falha
     
     Caractere car3=cria_lista();

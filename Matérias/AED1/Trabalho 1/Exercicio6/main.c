@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "numero.h"
+#include "lista.h"
 
 
 int main(){
 
 
-    Lista lst, lst1;
+    Lista lst=NULL, lst1=NULL;
     double x,elem;
     int op, pos, n;
 
