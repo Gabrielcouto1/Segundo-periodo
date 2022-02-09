@@ -113,3 +113,23 @@ int get_elem_pos(Lista lst, int pos, int *elem){
     *elem=aux->info;
     return 1;//Sucesso
 }
+
+int remove_ultimopar(Lista *lst,int *elem){
+    if(*lst==NULL)
+        return 0;
+    
+    Lista aux=*lst;
+    int par;
+    
+    par=aux->info;
+
+    while(aux!=NULL){
+        if((aux->info%2)==0){
+            par=aux->info;
+            *elem=par;
+        }
+        aux=aux->prox;
+    }
+
+    if(remove_elem(lst,par))
+}

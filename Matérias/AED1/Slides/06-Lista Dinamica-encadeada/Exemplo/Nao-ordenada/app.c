@@ -54,14 +54,17 @@ int main(){
                 printf("\nTamanho da lista: %d",tam_lista(&lista1));
                 break;
             case 6:
-                printf("\nInsira a posicao do elemento que deseja pegar: ");
-                scanf("%d",&pos);
+                remove_ultimonegativo(&lista1,&elem);
+                printf("\nUltimo negativo:%d",elem);
 
-                if(get_elem_pos(lista1,pos,&elem)==0)
-                    fprintf(stderr,"\n\t\t\tNao foi possivel pegar o elemento da posicao inserida.\n");
-
-                else   
-                    printf("\n\t\t\tO elemento da posicao %d eh: %d",pos,elem);
+                //printf("\nInsira a posicao do elemento que deseja pegar: ");
+                //scanf("%d",&pos);
+//
+                //if(get_elem_pos(lista1,pos,&elem)==0)
+                //    fprintf(stderr,"\n\t\t\tNao foi possivel pegar o elemento da posicao inserida.\n");
+//
+                //else   
+                //    printf("\n\t\t\tO elemento da posicao %d eh: %d",pos,elem);
 
                 break;
             default:

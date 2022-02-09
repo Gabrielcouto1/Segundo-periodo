@@ -9,3 +9,4 @@ int tam_lista(Lista *lst);
 int esvazia_lista(Lista *lst);
 int apaga_lista(Lista *lst);
 int get_elem_pos(Lista lst, int pos, int *elem);
+int remove_ultimonegativo(Lista *lst, int *elem);

@@ -70,7 +70,7 @@ int insere_elemento (Lista *lst, double elem) {
     N->prox=*lst; 
 
     if(lista_vazia(*lst) == 0) 
-        (*lst)->ant N; 
+        (*lst)->ant=N; 
 
     *lst = N;
     return 1;
@@ -91,15 +91,15 @@ Pos-Condicao: Lista de entrada com um elemento a menos
 
 */
 
-int remove_elemento (Lista *lst, double elem) {
+int remove_elemento (Lista *lst, int codigo) {
     if (lista_vazia(*lst))
         return 0;
     Lista aux = *lst;
 
-    while(aux->prox!=NULL&&aux->info!=elem) 
+    while(aux->prox!=NULL&&aux->info!=codigo) 
         aux = aux->prox;
 
-    if(aux->info!=elem)
+    if(aux->info!=codigo)
         return 0; 
 
     if(aux->prox!=NULL)
