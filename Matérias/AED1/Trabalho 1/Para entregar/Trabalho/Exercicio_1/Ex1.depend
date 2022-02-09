@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1644337893 source:c:\users\gabri\desktop\ex1\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1644336975 c:\users\gabri\desktop\ex1\lista.h
+
+1644337961 source:c:\users\gabri\desktop\ex1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1644337893 source:c:\users\gabri\desktop\trabalho\exercicio_1\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1644336975 c:\users\gabri\desktop\trabalho\exercicio_1\lista.h
+
+1644337961 source:c:\users\gabri\desktop\trabalho\exercicio_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+

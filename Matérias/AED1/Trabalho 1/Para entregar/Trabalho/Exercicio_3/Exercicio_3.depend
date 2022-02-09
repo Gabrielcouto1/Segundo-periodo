@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1644355026 source:c:\users\gabri\desktop\trabalho\exercicio_3\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1644355026 c:\users\gabri\desktop\trabalho\exercicio_3\lista.h
+
