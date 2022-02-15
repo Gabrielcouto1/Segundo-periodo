@@ -5,7 +5,6 @@
 struct caracteres{
     char caractere[max];
     int Fim;
-    int qtd;
 };
 
 /*  cria_lista()
@@ -34,7 +33,7 @@ Caractere cria_lista(){
             car->caractere[i]='\0';
     }
         
-    
+
     return car;
 }
 

@@ -152,7 +152,7 @@ Pós-condição: O elemento retornado deve ser diferente de "\0"
 */
 
 const char * get_elem_pos(Lista lst,int pos){
-    if(pos>=lst->Fim||pos>max||pos<=0)
+    if(lst==NULL||lista_vazia(lst)||pos>=lst->Fim||pos>max||pos<=0)
         return "\0";//Posicao invalida
 
     return lst->info[pos];
@@ -244,7 +244,7 @@ Pós-condição: Deve retornar 1
 */
 
 int insere_elem_pos(Lista lst, int pos, char elem[tam]){
-    if(lst==NULL||pos<=0||pos>max)
+    if(lst==NULL||lista_cheia(lst)||pos<=0||pos>max)
         return 0;
 
     strcpy(lst->info[pos],elem);

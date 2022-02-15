@@ -130,8 +130,8 @@ Pos-Condicao: Nenhuma
 */
 
 void imprime_lista (Lista lst) {
-    //if(lista_vazia(lst) == 1)
-      //  printf("A lista esta vazia!\n");
+    if(lista_vazia(lst) == 1)
+        printf("A lista esta vazia!\n");
 
     {
         while (lst != NULL) {

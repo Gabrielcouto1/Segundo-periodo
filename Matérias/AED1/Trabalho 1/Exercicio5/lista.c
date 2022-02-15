@@ -135,6 +135,7 @@ int insere_inicio(Lista *lst, int elem){
         N->prox=N;
         *lst=N;
     }
+    
     else{
         N->info=elem;
         N->prox=(*lst)->prox;

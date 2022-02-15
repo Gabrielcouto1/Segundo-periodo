@@ -62,15 +62,15 @@ Pos-Condicao: Lista aponta para novo no
 int insere_elemento (Lista *lst, double elem) {
     Lista N = (Lista) malloc(sizeof(struct no));
 
-    if (N == NULL)  
-        return 0; 
+    if (N == NULL)
+        return 0;
 
-    N->info=elem; 
-    N->ant=NULL; 
-    N->prox=*lst; 
+    N->info=elem;
+    N->ant=NULL;
+    N->prox=*lst;
 
-    if(lista_vazia(*lst) == 0) 
-        (*lst)->ant=N; 
+    if(lista_vazia(*lst) == 0)
+        (*lst)->ant=N;
 
     *lst = N;
     return 1;
@@ -91,16 +91,16 @@ Pos-Condicao: Lista de entrada com um elemento a menos
 
 */
 
-int remove_elemento (Lista *lst, int codigo) {
+int remove_elemento (Lista *lst, double elem) {
     if (lista_vazia(*lst))
         return 0;
     Lista aux = *lst;
 
-    while(aux->prox!=NULL&&aux->info!=codigo) 
+    while(aux->prox!=NULL&&aux->info!=elem)
         aux = aux->prox;
 
-    if(aux->info!=codigo)
-        return 0; 
+    if(aux->info!=elem)
+        return 0;
 
     if(aux->prox!=NULL)
         (aux)->prox->ant=aux->ant;
@@ -133,9 +133,9 @@ void imprime_lista (Lista lst) {
     if(lista_vazia(lst) == 1)
         printf("A lista esta vazia!\n");
 
-    else {
+    {
         while (lst != NULL) {
-            printf("%.2f ", lst->info);
+            printf("%.2f\n", lst->info);
             lst = lst->prox;
         }
     printf("\n");
@@ -163,20 +163,20 @@ int remove_ocorrencias (Lista *lst, double elem) {
     Lista aux = *lst;
 
     while(aux != NULL){
-        while(aux->prox!=NULL&&aux->info!=elem) 
+        while(aux->prox!=NULL&&aux->info!=elem)
             aux=aux->prox;
         Lista aux2 = aux;
 
-        if(aux2->info!=elem) 
+        if(aux2->info!=elem)
             return 0;
 
         if(aux2->prox!=NULL)
             (aux2)->prox->ant=aux2->ant;
 
-        if(aux2->ant!=NULL) 
+        if(aux2->ant!=NULL)
             (aux2)->ant->prox=aux2->prox;
 
-        if(aux2==*lst) 
+        if(aux2==*lst)
             *lst = aux2->prox;
 
         aux=aux->prox;
@@ -226,7 +226,7 @@ int remove_menor (Lista *lst) {
     if(aux2==*lst)
         *lst=aux2->prox;
 
-    free(aux2); 
+    free(aux2);
     return 1;
 }
 
@@ -247,7 +247,7 @@ Pos-Condicao: Lista retorna 1 se sucesso.
 int insere_pos(Lista *lst, double elem, int pos) {
     Lista N = (Lista) malloc(sizeof(struct no));
 
-    if (N == NULL) 
+    if (N == NULL)
         return 0;
 
     N->info = elem;
@@ -271,7 +271,7 @@ int insere_pos(Lista *lst, double elem, int pos) {
 
     aux->ant->prox = N;
 
-    N->ant = aux->ant; 
+    N->ant = aux->ant;
     aux->ant = N;
     N->prox = aux;
 
@@ -293,25 +293,27 @@ Pos-Condicao: Lista de entrada com um elemento a menos
 
 */
 
-int inverte_lista (Lista *lst, Lista *lst2) {
-    if(*lst==NULL||*lst2==NULL)
-        return 0;
+Lista inverte_lista (Lista *lst) {
+    if(*lst==NULL)
+        return NULL;
+
+    Lista lst2=cria_lista();
     Lista aux = *lst;
     while(aux != NULL){
         Lista N = (Lista) malloc(sizeof(struct no));
 
-        if (N == NULL)  
-            return 0; 
+        if (N == NULL)
+            return NULL;
 
         N->info = aux->info;
         N->ant = NULL;
-        N->prox = *lst2;
+        N->prox = lst2;
 
-        if (lista_vazia(*lst2) == 0)
-            (*lst2)->ant = N;
-        
-        *lst2 = N;
+        if (lista_vazia(lst2) == 0)
+            (lst2)->ant = N;
+
+        lst2 = N;
         aux=aux->prox;
     }
-    return 1;
+    return lst2;
 }
