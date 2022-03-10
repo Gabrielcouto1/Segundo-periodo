@@ -1,0 +1,11 @@
+typedef struct no * Pilha;
+
+Pilha cria_pilha();
+int pilha_vazia(Pilha p);
+int push(Pilha *p, char elem);
+int pop(Pilha *p, char *elem);
+int le_topo(Pilha *p, char *elem);
+void mostra_pilha(Pilha p);
+int decimal_binario(int num);
+int decimal_octal(int num);
+int decimal_hexadecimal(int num);
