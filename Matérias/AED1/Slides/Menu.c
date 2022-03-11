@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-#include "lista.h"
+//scanf("%[^\n]%*c",elem);
+//setbuf(stdin, NULL);
 
 int main(){
     int op;
