@@ -7,3 +7,4 @@ int pop(Pilha *p, char *elem);
 int le_topo(Pilha *p, char *elem);
 void mostra_pilha(Pilha p);
 int infixa_posfixa(char elem[]);
+int avaliar_posfixa(char elem[],int *saida);

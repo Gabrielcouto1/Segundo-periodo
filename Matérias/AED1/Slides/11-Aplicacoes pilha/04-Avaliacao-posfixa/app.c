@@ -4,7 +4,7 @@
 
 int main(){
     Pilha pilha1;
-    int op;
+    int op,res;
     char elem;
     char escopo[255];
 
@@ -65,6 +65,23 @@ int main(){
                 if(infixa_posfixa(escopo)==0)
                     printf("\nNao foi possivel converter a expressao.");
                 
+                switch(avaliar_posfixa(escopo,&res)){
+                    case 0:
+                        printf("\nNao foi possivel calcular a expressao.");
+                        break;
+                    case 1:
+                        printf("\nResultado da expressao %s: %d",escopo, res);
+                        break;
+                    case 2:
+                        printf("\nEsta faltando algum operando na expressao.");
+                        break;
+                    case 3:
+                        printf("\nEsta faltando algum operador na expressao.");
+                        break;
+                    //default:
+                    //    printf("\nNao foi possivel calcular a expressao.");
+                    //    break;
+                }
 
                 break;
             default:

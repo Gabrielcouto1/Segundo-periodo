@@ -6,7 +6,7 @@
 int main(){
     int op;
     int continuar=0;
-    char elem[255];
+    char elem[255],pos_fix[255];
 
     while (1){
         printf("\n---------------Menu---------------\n");
@@ -16,7 +16,9 @@ int main(){
         
         if(strcmp(elem,"FIM")==0)
             break;
-        
+
+        strcpy(pos_fix,elem);
+
         switch(verificar_escopo(elem)){
             case 0:
                 printf("\nA expressao eh invalida.");
@@ -37,12 +39,15 @@ int main(){
         }
 
         if(continuar==1){
-            if(infixa_posfixa(elem)==0){
+            if(infixa_posfixa(pos_fix)==0){
                 printf("\nNao foi possivel converter a expressao para sua forma pos-fixa.");
                 continuar=0;
             }
             else
-                printf("\nExpressao convertida para a forma pos-fixa: %s",elem);
+                printf("\nExpressao convertida para a forma pos-fixa: %s",pos_fix);
+        }
+        if(continuar==1){
+            
         }
     }
     printf("\nObrigado!\n");

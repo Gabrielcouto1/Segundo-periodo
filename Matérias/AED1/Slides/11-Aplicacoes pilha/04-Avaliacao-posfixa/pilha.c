@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "pilha.h"
 
 struct no{
@@ -70,7 +71,7 @@ void mostra_pilha(Pilha p){
 
 int infixa_posfixa(char elem[]){
     int i,cont=0;
-    char *saida;
+    char saida[255]="\0";
     Pilha pilha1=cria_pilha();
 
     for(i=0;elem[i]!='\0';i++){
@@ -106,11 +107,53 @@ int infixa_posfixa(char elem[]){
         return 0;
 }
 
-int avaliar_posfixa(char elem[]){
-    int i;
+int avaliar_posfixa(char elem[],int *saida){
+    int i,aux,num1,num2,res,cont=0;
+    char resultado,ch1,ch2;
     Pilha pilha1=cria_pilha();
 
     for(i=0;elem[i]!='\0';i++){
+        aux=elem[i]-'0';
+        if(aux!=0||elem[i]=='0'){
+            if(push(&pilha1,aux)==0)
+                return 0;
+            cont++;
+        }
 
+        if(elem[i]=='-'||elem[i]=='+'||elem[i]=='/'||elem[i]=='^'||elem[i]=='*'){
+            //if(cont>2)
+            //    return 3;
+            if(pop(&pilha1,&ch2)==0)
+                return 2;
+            if(pop(&pilha1,&ch1)==0)
+                return 2;
+            num1=ch1-'0';
+            num2=ch2-'0';
+            switch(elem[i]){
+                case '-':
+                    res=num1-num2;
+                    break;
+                case '+':
+                    res=num1+num2;
+                    break;
+                case '/':
+                    res=num1/num2;
+                    break;
+                case '^':
+                    res=num1^num2;
+                    break;
+                case '*':
+                    res=num1*num2;
+                    break;
+            }
+            resultado=res+'0';
+            if(push(&pilha1,resultado)==0)
+                return 0;
+            cont=1;
+        }
     }
+    if(pop(&pilha1,&resultado)==0)
+        return 0;
+    *saida=resultado-'0';
+    return 1;
 }

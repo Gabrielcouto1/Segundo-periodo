@@ -153,7 +153,8 @@ int verificar_escopo(char elem[]){
 
 int infixa_posfixa(char elem[]){
     int i,cont=0;
-    char *saida;
+    char saida[255]="\0";
+
     Pilha pilha1=cria_pilha();
 
     for(i=0;elem[i]!='\0';i++){
@@ -177,9 +178,15 @@ int infixa_posfixa(char elem[]){
         }
     }
     if(pilha_vazia(pilha1)==1){
-        //strcpy(elem,saida);
+        strcpy(elem,saida);
         return 1;
     }
     else 
         return 0;
+}
+
+int avaliar_posfixa(){
+
+
+    
 }
