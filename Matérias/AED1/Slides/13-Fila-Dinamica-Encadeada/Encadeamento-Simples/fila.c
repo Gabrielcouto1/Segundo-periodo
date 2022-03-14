@@ -65,4 +65,32 @@ int remove_ini(Fila f, int *elem){
     return 1;
 }
 
-//mostra_fila  apaga_fila e exclui_fila
+void mostra_fila(Fila f){
+    if(fila_vazia(f))
+        printf("\nA fila esta vazia.");
+    else{
+        struct no * aux=f->ini;
+        while(aux!=NULL){
+            printf("\n%d",aux->info);
+            aux=aux->prox;
+        }
+    }
+}
+
+int exclui_fila(Fila *f){
+    if(*f==NULL)
+        return 0;
+    while(*f!=NULL){
+        int elem;
+        struct no * aux=(*f)->ini;
+        if(remove_ini(*f,&elem)==0)
+            break;
+        aux=aux->prox;
+    }
+    return 1;
+}
+
+Fila apaga_fila(Fila *f){
+    exclui_fila(f);
+    return cria_fila();
+}
