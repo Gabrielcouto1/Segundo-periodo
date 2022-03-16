@@ -3,7 +3,10 @@
 #include "fila.h"
 
 struct no{
-    int info;
+    int codigo;
+    float valor;
+    float percentual;
+    char risco;
     struct no * prox;
 };
 
@@ -29,14 +32,17 @@ int fila_vazia(Fila f){
     return 0;
 }
 
-int insere_fim(Fila f, int elem){
+int insere_fim(Fila f, int codigo, float valor, float percentual, char risco){
     struct no * N;
     N=(struct no *)malloc(sizeof(struct no));
     
     if(N==NULL) 
         return 0;
 
-    N->info=elem;
+    N->codigo=codigo;
+    N->valor=valor;
+    N->percentual=percentual;
+    N->risco=risco;
     N->prox=NULL;
 
     if(fila_vazia(f))
@@ -49,12 +55,15 @@ int insere_fim(Fila f, int elem){
     return 1;
 }
 
-int remove_ini(Fila f, int *elem){
+int remove_ini(Fila f, int *codigo, float *valor, float *percentual, char *risco){
     if(f==NULL||fila_vazia(f))
         return 0;
 
     struct no * aux=f->ini;
-    *elem=aux->info;
+    *codigo=aux->codigo;
+    *valor=aux->valor;
+    *percentual=aux->percentual;
+    *risco=aux->risco;
 
     if(f->ini==f->fim)
         f->fim==NULL;

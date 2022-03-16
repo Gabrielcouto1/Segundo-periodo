@@ -1,4 +1,3 @@
-#include <stdio.h> 
 #include <stdlib.h> 
 #include "lista.h"
 
@@ -26,15 +25,15 @@ int insere_final(Lista *lst,int elem){
     N->info=elem;
 
     if(lista_vazia(*lst)==1){
-        N->prox=N;//Faz o novo no apontar para ele mesmo
-        *lst=N;//Faz a lista apontar para o novo no(ultimo no)
+        N->prox=N;
+        *lst=N;
     }
     else{
-        N->prox=(*lst)->prox;//Faz o novo apontar o primeiro no
-        (*lst)->prox=N;//Faz o ultimo no apontar para o novo no
-        *lst=N;//Faz a lista apontar para o novo no(ultimo no)
+        N->prox=(*lst)->prox;
+        (*lst)->prox=N;
+        *lst=N;
     }
-    return 1;//Sucesso
+    return 1;
 }
 
 int insere_inicio(Lista *lst, int elem){
@@ -58,10 +57,10 @@ int insere_inicio(Lista *lst, int elem){
 
 int remove_inicio(Lista *lst,int *elem){
     if(lista_vazia(*lst)==1)
-        return 0;//Falha
+        return 0;
     
     Lista aux=(*lst)->prox;
-    *elem=aux->info;//Retorna valor do no a ser reemovido
+    *elem=aux->info;
     if(*lst==(*lst)->prox)
         *lst=NULL;
     else

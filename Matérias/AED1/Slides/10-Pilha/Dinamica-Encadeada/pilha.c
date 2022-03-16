@@ -1,9 +1,8 @@
-#include <stdio.h> 
-#include <stdlib.h> 
+#include <stdlib.h>
 #include "pilha.h"
 
 struct no{
-    int info;
+    char info;
     struct no * prox;
 };
 
@@ -17,7 +16,7 @@ int pilha_vazia(Pilha p){
     return 0;
 }
 
-int push(Pilha *p,int elem){
+int push(Pilha *p,char elem){
     Pilha N=(Pilha)malloc(sizeof(struct no));
 
     if(N==NULL)
@@ -30,7 +29,7 @@ int push(Pilha *p,int elem){
     return 1;
 }
 
-int pop(Pilha *p,int *elem){
+int pop(Pilha *p,char *elem){
     if(pilha_vazia(*p))
         return 0;
     
@@ -42,11 +41,24 @@ int pop(Pilha *p,int *elem){
     return 1;
 }
 
-int le_topo(Pilha *p, int *elem){
+int le_topo(Pilha *p, char *elem){
     if(pilha_vazia(*p))
         return 0;
     
     *elem=(*p)->info;
+
+    return 1;
+}
+
+int apaga_pilha(Pilha *p){
+    if(*p==NULL)
+        return 0;
+    
+    while(*p!=NULL){
+        Pilha aux=*p;
+        *p=aux->prox;
+        free(aux);
+    }
 
     return 1;
 }
