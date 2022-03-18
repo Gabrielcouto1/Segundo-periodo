@@ -72,7 +72,7 @@ int decimal_binario(int num){
     if(num<0)
         return 0;
     if(num==0){
-        printf("Numero decimal: 0\nNumero octal: 0");
+        printf("Numero decimal: 0\nNumero binario: 0");
         return 1;
     }
 
@@ -102,7 +102,7 @@ int decimal_octal(int num){
     if(num<0)
         return 0;
     if(num==0){
-        printf("Numero decimal: 0\nNumero binario: 0");
+        printf("Numero decimal: 0\nNumero octal: 0");
         return 1;
     }
 
