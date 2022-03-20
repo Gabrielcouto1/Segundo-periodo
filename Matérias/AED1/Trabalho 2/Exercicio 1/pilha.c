@@ -79,7 +79,7 @@ int decimal_binario(int num){
     Pilha binario=cria_pilha();
     int res;
     char r;
-    int num1=num;
+    int numdec=num,num1=num;
 
     while(num!=0){
         res=num%2;
@@ -89,7 +89,7 @@ int decimal_binario(int num){
         num/=2;
     }
     
-    printf("Numero decimal: %d\nNumero binario: ",num);
+    printf("Numero decimal: %d\nNumero binario: ",numdec);
     
     while(binario!=NULL){
         printf("%c",binario->info);

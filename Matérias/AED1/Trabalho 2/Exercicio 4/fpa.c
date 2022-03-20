@@ -2,8 +2,6 @@
 #include <stdlib.h> 
 #include "fpa.h"
 
-
-
 struct no {
     struct paciente pcnt;
     struct no * prox;
