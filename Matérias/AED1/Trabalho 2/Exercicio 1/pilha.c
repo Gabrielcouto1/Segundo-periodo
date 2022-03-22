@@ -18,7 +18,7 @@ Pilha cria_pilha(){
 }
 
 int pilha_vazia(Pilha p){
-    if(p->topo=1)
+    if(p->topo=-1)
         return 1;
 
     return 0;
@@ -37,6 +37,7 @@ int push(Pilha p, char elem){
     p->topo++;
     p->info[p->topo]=elem;
     return 1;
+    
 }
 
 int pop(Pilha p, char *elem){

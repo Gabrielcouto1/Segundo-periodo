@@ -186,7 +186,5 @@ int infixa_posfixa(char elem[]){
 }
 
 int avaliar_posfixa(){
-
-
     
 }
