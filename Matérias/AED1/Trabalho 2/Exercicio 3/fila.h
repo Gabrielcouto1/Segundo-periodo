@@ -1,11 +1,28 @@
+#ifndef LISTA_H_INCLUDED
+#define LISTA_H_INCLUDED
+
+struct carro
+{
+    char placa[8], servico;
+    time_t hora;
+};
+typedef struct carro Carro;
 typedef struct fila * Fila;
-#define max 20
 
 Fila cria_fila();
-int fila_vazia(Fila f);
-int fila_cheia(Fila f);
-int insere_fim(Fila f, int elem);
-int remove_ini(Fila f, int *elem);
-void mostra_fila(Fila f);
-void exclui_fila(Fila *f);
-Fila apaga_fila(Fila *f);
+
+int fila_vazia(Fila);
+
+int fila_cheia(Fila);
+
+int fila_tam(Fila);
+
+int insere_fim(Fila, Carro);
+
+int remove_inicio(Fila, Carro *);
+
+int apaga_fila(Fila *);
+
+int esvazia_fila(Fila);
+
+#endif // LISTA_H_INCLUDED

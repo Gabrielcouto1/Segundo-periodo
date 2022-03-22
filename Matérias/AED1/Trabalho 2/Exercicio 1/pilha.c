@@ -2,54 +2,58 @@
 #include <stdio.h>
 #include "pilha.h"
 
-struct no{
-    char info;
-    struct no * prox;
+struct pilha{
+    char info[max];
+    int topo;
 };
 
 Pilha cria_pilha(){
-    return NULL;
+    Pilha p;
+    p=(Pilha)malloc(sizeof(struct pilha));
+
+    if(p!=NULL)
+        p->topo=-1;
+    
+    return p;
 }
 
 int pilha_vazia(Pilha p){
-    if(p==NULL)
+    if(p->topo=1)
         return 1;
 
     return 0;
 }
 
-int push(Pilha *p, char elem){
-    Pilha N=(Pilha)malloc(sizeof(struct no));
+int pilha_cheia(Pilha p){
+    if(p->topo==max-1)
+        return 1;
+    return 0;
+}
 
-    if(N==NULL)
+int push(Pilha p, char elem){
+    if(p==NULL||pilha_cheia(p)==1)
+        return 0;
+
+    p->topo++;
+    p->info[p->topo]=elem;
+    return 1;
+}
+
+int pop(Pilha p, char *elem){
+    if(p==NULL||pilha_vazia(p)==1)
         return 0;
     
-    N->info=elem;
-    N->prox=*p;
-    *p=N;
+    *elem=p->info[p->topo];
+    p->topo--;
 
     return 1;
 }
 
-int pop(Pilha *p, char *elem){
-    if(pilha_vazia(*p))
+int le_topo(Pilha p, char *elem){
+    if(p==NULL||pilha_vazia(p)==1)
         return 0;
     
-    Pilha aux=*p;
-
-    *elem=aux->info;
-    *p=aux->prox;
-
-    free(aux);
-
-    return 1;
-}   
-
-int le_topo(Pilha *p, char *elem){
-    if(pilha_vazia(*p))
-        return 0;
-    
-    *elem=(*p)->info;
+    *elem=p->info[p->topo];
 
     return 1;
 }
@@ -59,12 +63,9 @@ void mostra_pilha(Pilha p){
         printf("\nA pilha esta vazia.");
 
     else{
-        Pilha aux=p;
-        printf("\n");
-        while(aux!=NULL){
-            printf("%c\n",aux->info);
-            aux=aux->prox;
-        }
+        int i;
+        for(i=0;i<max;i++)
+            printf("\n%c",p->info[i]);
     }
 }
 
@@ -77,24 +78,26 @@ int decimal_binario(int num){
     }
 
     Pilha binario=cria_pilha();
-    int res;
+    int res,cont=0;
     char r;
     int numdec=num,num1=num;
 
     while(num!=0){
         res=num%2;
         r=res+48;
-        if(push(&binario,r)==0)
+        if(push(binario,r)==0)
             return 0;
+        else 
+            cont++;
         num/=2;
     }
     
     printf("Numero decimal: %d\nNumero binario: ",numdec);
     
-    while(binario!=NULL){
-        printf("%c",binario->info);
-        binario=binario->prox;
-    }
+    int i;
+    for(i=cont;i>=0;i--)
+        printf("%c",binario->info[i]);
+    
     return 1;
 }
 
@@ -107,24 +110,26 @@ int decimal_octal(int num){
     }
 
     Pilha octal=cria_pilha();
-    int res;
+    int res,cont=0;
     char r;
     int num1=num;
 
+
     while(num!=0){
         res=num%8;
-        r=res;
-        if(push(&octal,r)==0)
+        r=res+48;
+        if(push(octal,r)==0)
             return 0;
+        else 
+            cont++;
         num/=8;
     }
     
     printf("Numero decimal: %d\nNumero octal: ",num1);
     
-    while(octal!=NULL){
-        printf("%d",octal->info);
-        octal=octal->prox;
-    }
+    int i;
+    for(i=cont;i>=0;i--)
+        printf("%c",octal->info[i]);
 
     return 1;
 }
@@ -138,7 +143,7 @@ int decimal_hexadecimal(int num){
     }
 
     Pilha hexa=cria_pilha();
-    int res;
+    int res,cont=0;
     char aux;
     char r;
     int num1=num;
@@ -150,51 +155,75 @@ int decimal_hexadecimal(int num){
         if(res>=10){
             switch(res){
                 case 10:
-                    if(push(&hexa,'A')==0)
+                    if(push(hexa,'A')==0)
                         return 0;
+                    else    
+                        cont++;
                     
                     break;
                 case 11:
-                    if(push(&hexa,'B')==0)
+                    if(push(hexa,'B')==0)
                         return 0;
-                    
+                    else    
+                        cont++;
+
                     break;
                 case 12:
-                    if(push(&hexa,'C')==0)
+                    if(push(hexa,'C')==0)
                         return 0;
-                    
+                    else    
+                        cont++;
+
                     break;
                 case 13:
-                    if(push(&hexa,'D')==0)
+                    if(push(hexa,'D')==0)
                         return 0;
-                    
+                    else    
+                        cont++;
+
                     break;
                 case 14:
-                    if(push(&hexa,'E')==0)
+                    if(push(hexa,'E')==0)
                         return 0;
-                    
+                    else    
+                        cont++;
+
                     break;
                 case 15:
-                    if(push(&hexa,'F')==0)
+                    if(push(hexa,'F')==0)
                         return 0;
-                    
+                    else    
+                        cont++;
+
                     break;
                 default:
                     break;
             }
         }
-        if(res<10)
-            if(push(&hexa,r)==0)
+        if(res<10){
+            if(push(hexa,r)==0)
                 return 0;
+            else    
+                cont++;
+        }
         num/=16;
     }
     
     printf("Numero decimal: %d\nNumero hexa: ",num1);
     
-    while(hexa!=NULL){
-        printf("%c",hexa->info);
-        hexa=hexa->prox;
-    }
+    int i;
+    for(i=cont;i>=0;i--)
+        printf("%c",hexa->info[i]);
 
     return 1;
+}
+
+void exclui_pilha(Pilha *p){
+    free(*p);
+    *p=NULL;
+}
+
+Pilha apaga_pilha(Pilha *p){
+    exclui_pilha(p);
+    return cria_pilha();
 }

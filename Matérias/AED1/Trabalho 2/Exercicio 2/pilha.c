@@ -32,7 +32,7 @@ int push(Pilha *p, char elem){
     int aux;
         
     if(elem>=48&&elem<=57){
-        aux=elem-'0';
+        aux=elem-48;
         N->info.i_int=aux;
         N->tipo=0;
     }
@@ -148,7 +148,6 @@ int verificar_escopo(char elem[]){
         return 1;
     else 
         return 3;
-
 }
 
 int infixa_posfixa(char elem[]){
@@ -177,6 +176,7 @@ int infixa_posfixa(char elem[]){
                 cont++;
         }
     }
+
     if(pilha_vazia(pilha1)==1){
         strcpy(elem,saida);
         return 1;
