@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1647808996 source:c:\users\gabri\desktop\exercicio 5\deque.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"deque.h"
+
+1647808996 c:\users\gabri\desktop\exercicio 5\deque.h
+

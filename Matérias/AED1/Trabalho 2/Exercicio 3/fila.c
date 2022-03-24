@@ -48,9 +48,11 @@ int insere_fim(Fila fi, Carro A)
     if (fila_cheia(fi))
         return 0;
 
-    strcpy(fi->elem[(fi->inicio+fi->cont) % MAX].placa, A.placa);
-    fi->elem[(fi->inicio+fi->cont) % MAX].servico = A.servico;
-    fi->elem[(fi->inicio+fi->cont) % MAX].hora = A.hora;
+    fi->elem[(fi->inicio+fi->cont) % MAX]=A;
+
+    //strcpy(fi->elem[(fi->inicio+fi->cont) % MAX].placa, A.placa);
+    //fi->elem[(fi->inicio+fi->cont) % MAX].servico = A.servico;
+    //fi->elem[(fi->inicio+fi->cont) % MAX].hora = A.hora;
     fi->cont++;
     return 1;
 }
@@ -60,6 +62,7 @@ int remove_inicio(Fila fi, Carro *A)
     if (fila_vazia(fi))
         return 0;
 
+    
     strcpy(A->placa, fi->elem[fi->inicio].placa);
     A->servico = fi->elem[fi->inicio].servico;
     A->hora = fi->elem[fi->inicio].hora;
